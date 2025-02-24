@@ -24,7 +24,7 @@ const Home = () => {
         Twoja prywatna strefa komfortu
       </h1>
       <p className="text-xl md:text-2xl">
-        Komfortowy domek z dala od miejskiego zgiełku
+        Przytulny domek z dala od miejskiego zgiełku
       </p>
     </div>
   </div>

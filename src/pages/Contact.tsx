@@ -7,7 +7,7 @@ const Contact = () => {
       {/* Header Image */}
       <div className="h-64 relative">
         <img
-          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
+          src="/background.jpg"
           alt="Las"
           className="w-full h-full object-cover"
         />
