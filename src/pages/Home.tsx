@@ -13,7 +13,7 @@ const Home = () => {
           />
           <img
             src="/odpoczniesztu-bg.jpg"
-            alt="Domek w górach"
+            alt="Domek"
             className="w-full h-full object-cover"
           />
         </picture>
