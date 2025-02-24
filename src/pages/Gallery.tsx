@@ -7,9 +7,28 @@ type GalleryCategory = {
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>("pokoje");
+  const [selectedCategory, setSelectedCategory] = useState<string>("na zewnątrz");
 
   const categories: GalleryCategory[] = [
+    {
+      name: "na zewnątrz",
+      images: [
+        { src: "/outside10.jpg", alt: "Na zewnątrz 1" },
+        { src: "/outside11.jpg", alt: "Na zewnątrz 2" },
+        { src: "/outside12.jpg", alt: "Na zewnątrz 3" },
+        { src: "/outside13.jpg", alt: "Na zewnątrz 3" },
+      ],
+    },
+    {
+      name: "salon",
+      images: [
+        { src: "/living1.jpg", alt: "Salon 1" },
+        { src: "/living2.jpg", alt: "Salon 2" },
+        { src: "/living3.jpg", alt: "Salon 3" },
+        { src: "/living4.jpg", alt: "Salon 4" },
+        { src: "/living5.jpg", alt: "Salon 5" },
+      ],
+    },
     {
       name: "pokoje",
       images: [
@@ -18,19 +37,8 @@ const Gallery = () => {
       ],
     },
     {
-      name: "salon",
-      images: [
-        { src: "/living1.jpg", alt: "Salon 1" },
-        { src: "/living2.jpg", alt: "Salon 2" },
-      ],
-    },
-    {
       name: "taras",
       images: [{ src: "/taras.jpg", alt: "Taras" }],
-    },
-    {
-      name: "na zewnątrz",
-      images: [{ src: "/outside1.jpg", alt: "Na zewnątrz 1" }],
     },
     {
       name: "sauna",
