@@ -139,8 +139,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <MapPin className="w-5 h-5 mr-2" />
             Lokalizacja
           </h3>
-          <p className="hidden md:inline">Brzozowa 270,</p>
-          <p>34-000 Gromnik, Polska</p>
+          <p className="hidden md:inline">Brzozowa 270</p>
+          <p>33-182 Brzozowa, Polska</p>
           <a 
             href="https://maps.app.goo.gl/NDb1JbzdycAUYieX7" 
             target="_blank" 

@@ -41,7 +41,7 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Adres</h3>
                   <p>Brzozowa 270</p>
-                  <p>34-000 Gromnik</p>
+                  <p>33-182 Brzozowa</p>
                 </div>
               </div>
             </div>
