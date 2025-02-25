@@ -124,18 +124,18 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Footer */}
       <footer>
-  {location.pathname === '/' && (
-    <div className="bg-[#F5F5F5] py-8">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="flex justify-center">
-          <img 
-            src="/odpoczniesztu-logo2.png" 
-            alt="Odpoczniesztu" 
-            className="h-16 w-auto"
-          />
-        </div>
-        <div className="md:px-8">
-        <h3 className="text-lg font-semibold mb-4 flex items-center">
+        {location.pathname === '/' && (
+          <div className="bg-[#F5F5F5] py-8">
+            <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+              <div className="flex justify-center md:items-center">
+                <img 
+                  src="/odpoczniesztu-logo2.png" 
+                  alt="Odpoczniesztu" 
+                  className="h-16 w-auto self-center"
+                />
+              </div>
+              <div className="md:px-8 flex flex-col items-center md:items-start">
+                <h3 className="text-lg font-semibold mb-4 flex items-center">
                   <MapPin className="w-5 h-5 mr-2" />
                   Lokalizacja
                 </h3>
@@ -148,34 +148,34 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 >
                   Zobacz na mapie <MapPin className="w-4 h-4 ml-1" />
                 </a>
+              </div>
+              <div className="md:px-8 flex flex-col items-center md:items-start">
+                <h3 className="text-lg font-semibold mb-4 flex items-center">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Kontakt
+                </h3>
+                <p>Tel: +48 880 465 592</p>
+                <p>E-mail: odpoczniesztu@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="bg-[#1A1A1A] text-white py-4">
+          <div className="max-w-7xl mx-auto px-4 flex flex-row justify-between items-center">
+            <p className="flex-1">
+              {currentYear} | Odpoczniesz tu<span className="hidden md:inline">, Brzozowa 270</span>
+            </p>
+            <div className="flex space-x-4 justify-end">
+              <a href="https://www.facebook.com/profile.php?id=61566660407549" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/odpoczniesztu/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary">
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="md:px-8">
-          <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <Phone className="w-5 h-5 mr-2" />
-            Kontakt
-          </h3>
-          <p>Tel: +48 880 465 592</p>
-          <p>E-mail: odpoczniesztu@gmail.com</p>
-        </div>
-      </div>
-    </div>
-  )}
-  <div className="bg-[#1A1A1A] text-white py-4">
-    <div className="max-w-7xl mx-auto px-4 flex flex-row justify-between items-center">
-      <p className="flex-1">
-        {currentYear} | Odpoczniesz tu<span className="hidden md:inline">, Brzozowa 270</span>
-      </p>
-      <div className="flex space-x-4 justify-end">
-        <a href="https://www.facebook.com/profile.php?id=61566660407549" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary">
-          <Facebook className="w-5 h-5" />
-        </a>
-        <a href="https://www.instagram.com/odpoczniesztu/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary">
-          <Instagram className="w-5 h-5" />
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
+      </footer>
     </div>
   );
 };
