@@ -15,28 +15,116 @@ const Attractions = () => {
 
   const attractions: Attraction[] = [
     {
-      title: 'Ciężkowicko-Rożnowski Park Krajobrazowy',
-      description: 'Park krajobrazowy oferujący malownicze szlaki turystyczne i unikalne formacje skalne.',
-      distance: '5 km',
-      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e',
-      mapLink: 'https://maps.app.goo.gl/',
-      category: 'przyroda'
+      "title": "Ciężkowicko-Rożnowski Park Krajobrazowy",
+      "description": "Park krajobrazowy oferujący malownicze szlaki turystyczne i unikalne formacje skalne.",
+      "distance": "5 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Przyroda"
     },
     {
-      title: 'Tarnów',
-      description: 'Park krajobrazowy oferujący malownicze szlaki turystyczne i unikalne formacje skalne.',
-      distance: '5 km',
-      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e',
-      mapLink: 'https://maps.app.goo.gl/',
-      category: 'Miasta'
+      "title": "Skamieniałe Miasto w Ciężkowicach",
+      "description": "Rezerwat przyrody z unikalnymi formacjami skalnymi przypominającymi ruiny miasta.",
+      "distance": "10 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Przyroda"
     },
     {
-      title: 'Skamieniałe Miasto',
-      description: 'Rezerwat przyrody nieożywionej z charakterystycznymi formacjami skalnymi.',
-      distance: '10 km',
-      image: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b',
-      mapLink: 'https://maps.app.goo.gl/',
-      category: 'przyroda'
+      "title": "Brzanka – szlak górski",
+      "description": "Malowniczy szlak prowadzący na szczyt Brzanki z wieżą widokową.",
+      "distance": "15 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Aktywność"
+    },
+    {
+      "title": "Wyciąg narciarski Jurasówka",
+      "description": "Stok narciarski idealny dla miłośników sportów zimowych.",
+      "distance": "20 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Aktywność"
+    },
+    {
+      "title": "Aqua Park Tarnów",
+      "description": "Park wodny z licznymi atrakcjami dla dzieci i dorosłych.",
+      "distance": "25 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Dla dzieci"
+    },
+    {
+      "title": "Velo Dunajec – ścieżka rowerowa",
+      "description": "Malownicza trasa rowerowa wzdłuż rzeki Dunajec.",
+      "distance": "30 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Aktywność"
+    },
+    {
+      "title": "Kościół pw. św. Mikołaja Biskupa w Brzozowej",
+      "description": "Drewniany kościół z XVI wieku o unikalnej architekturze.",
+      "distance": "0 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Kultura"
+    },
+    {
+      "title": "Muzeum Regionalne w Brzozowej",
+      "description": "Muzeum prezentujące lokalne dziedzictwo kulturowe i historyczne.",
+      "distance": "0 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Kultura"
+    },
+    {
+      "title": "Centrum Dziedzictwa Szkła w Krośnie",
+      "description": "Interaktywne muzeum ukazujące proces tworzenia szkła.",
+      "distance": "40 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Kultura"
+    },
+    {
+      "title": "Grodzisko w Trepczy",
+      "description": "Archeologiczne stanowisko z pozostałościami wczesnośredniowiecznego grodziska.",
+      "distance": "45 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Kultura"
+    },
+    {
+      "title": "Skansen w Sanoku",
+      "description": "Muzeum Budownictwa Ludowego prezentujące tradycyjną architekturę regionu.",
+      "distance": "50 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Kultura"
+    },
+    {
+      "title": "Park Linowy w Tarnowie",
+      "description": "Atrakcja dla dzieci i dorosłych z trasami o różnym stopniu trudności.",
+      "distance": "25 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Dla dzieci"
+    },
+    {
+      "title": "Rezerwat Przyrody Skamieniałe Miasto",
+      "description": "Obszar chroniony z unikalnymi formacjami skalnymi i legendami.",
+      "distance": "10 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Przyroda"
+    },
+    {
+      "title": "Ścieżka edukacyjna na Brzance",
+      "description": "Trasa z tablicami informacyjnymi o lokalnej faunie i florze.",
+      "distance": "15 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Aktywność"
     }
   ];
 
