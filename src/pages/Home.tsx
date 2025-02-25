@@ -7,11 +7,11 @@ const Home = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const images = [
-    '/room1.jpg',
-    '/room2.jpg',
+    '/jacuzzi.jpg',
+    '/outside11.jpg',
+    '/grill1.jpg',
     '/living1.jpg',
-    '/living2.jpg',
-    '/taras.jpg'
+    '/outside14.jpg'
   ];
 
   const handleImageClick = () => {
