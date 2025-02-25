@@ -8,7 +8,6 @@ const Home = () => {
 
   const images = [
     '/jacuzzi.jpg',
-    '/outside11.jpg',
     '/grill1.jpg',
     '/living1.jpg',
     '/outside14.jpg'
