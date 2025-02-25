@@ -16,18 +16,18 @@ const Attractions = () => {
   const attractions: Attraction[] = [
     {
       "title": "Skamieniałe Miasto w Ciężkowicach",
-      "description": "Rezerwat przyrody z unikalnymi formacjami skalnymi przypominającymi ruiny miasta.",
+      "description": "Leśny rezerwat z polem kempingowym i miejscami na piknik oraz prowadzącymi do wodospadu szlakami wśród skał o różnych kształtach.",
       "distance": "10 km",
       "image": "/atrakcje/skamienialemiasto.jpg",
       "mapLink": "https://maps.app.goo.gl/jFRaoUph6H3ymt5QA",
       "category": "Aktywność"
     },
     {
-      "title": "Brzanka – szlak górski",
-      "description": "Malowniczy szlak prowadzący na szczyt Brzanki z wieżą widokową.",
+      "title": "Brzanka – szlak górski, wieża widokowa, bacówka",
+      "description": "Brzanka to jeden z najwyższych szczytów na Pogórzu Ciężkowickim. Mierzy 534 m n.p.m., a na jej zboczach stoi metalowa wieża widokowa oraz bacówka.",
       "distance": "15 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
+      "image": "/atrakcje/brzanka.jpg",
+      "mapLink": "https://maps.app.goo.gl/edjHBaXGXYPfkLbE7",
       "category": "Aktywność"
     },
     {
