@@ -32,10 +32,10 @@ const Attractions = () => {
     },
     {
       "title": "Velo Dunajec – ścieżka rowerowa",
-      "description": "Malownicza trasa rowerowa wzdłuż rzeki Dunajec.",
-      "distance": "30 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
+      "description": "Velo Dunajec przez wielu uważana za najpiękniejszą trasę rowerową w Polsce. Przecina 7 pasm górskich, objeżdża 3 duże jeziora i zagląda pod bramy 7 zamków.",
+      "distance": "10 km",
+      "image": "/atrakcje/velodunajec.jpg",
+      "mapLink": "https://maps.app.goo.gl/BpJGGHQuBmBg3CHL8",
       "category": "Aktywność"
     },
     {
