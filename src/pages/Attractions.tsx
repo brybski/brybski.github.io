@@ -18,8 +18,8 @@ const Attractions = () => {
       "title": "Skamieniałe Miasto w Ciężkowicach",
       "description": "Rezerwat przyrody z unikalnymi formacjami skalnymi przypominającymi ruiny miasta.",
       "distance": "10 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
+      "image": "/atrakcje/skamienialemiasto.jpg",
+      "mapLink": "https://maps.app.goo.gl/jFRaoUph6H3ymt5QA",
       "category": "Aktywność"
     },
     {
