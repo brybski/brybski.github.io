@@ -40,10 +40,10 @@ const Attractions = () => {
     },
     {
       "title": "Wyciąg narciarski Jurasówka",
-      "description": "Stok narciarski idealny dla miłośników sportów zimowych.",
-      "distance": "20 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
+      "description": "Rodzinny stok narciarski idealny dla miłośników sportów zimowych.",
+      "distance": "5 km",
+      "image": "/atrakcje/jurasowka.jpg",
+      "mapLink": "https://maps.app.goo.gl/zMj9J6Wy1Ufa6rV99",
       "category": "Aktywność"
     },
     {
