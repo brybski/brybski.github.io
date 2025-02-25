@@ -20,12 +20,20 @@ const Attractions = () => {
       "distance": "10 km",
       "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
       "mapLink": "https://maps.app.goo.gl/",
-      "category": "Przyroda"
+      "category": "Aktywność"
     },
     {
       "title": "Brzanka – szlak górski",
       "description": "Malowniczy szlak prowadzący na szczyt Brzanki z wieżą widokową.",
       "distance": "15 km",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      "mapLink": "https://maps.app.goo.gl/",
+      "category": "Aktywność"
+    },
+    {
+      "title": "Velo Dunajec – ścieżka rowerowa",
+      "description": "Malownicza trasa rowerowa wzdłuż rzeki Dunajec.",
+      "distance": "30 km",
       "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
       "mapLink": "https://maps.app.goo.gl/",
       "category": "Aktywność"
@@ -47,12 +55,12 @@ const Attractions = () => {
       "category": "Dla dzieci"
     },
     {
-      "title": "Velo Dunajec – ścieżka rowerowa",
-      "description": "Malownicza trasa rowerowa wzdłuż rzeki Dunajec.",
-      "distance": "30 km",
+      "title": "Park Linowy w Tarnowie",
+      "description": "Atrakcja dla dzieci i dorosłych z trasami o różnym stopniu trudności.",
+      "distance": "25 km",
       "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
       "mapLink": "https://maps.app.goo.gl/",
-      "category": "Aktywność"
+      "category": "Dla dzieci"
     },
     {
       "title": "Centrum Dziedzictwa Szkła w Krośnie",
@@ -62,15 +70,7 @@ const Attractions = () => {
       "mapLink": "https://maps.app.goo.gl/",
       "category": "Kultura"
     },
-    {
-      "title": "Park Linowy w Tarnowie",
-      "description": "Atrakcja dla dzieci i dorosłych z trasami o różnym stopniu trudności.",
-      "distance": "25 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Dla dzieci"
-    },
-    // lodowisko, letni park wodny
+    // lodowisko, letni park wodny, sala zabaw moze jakas
   ];
 
   const categories = ['wszystkie', ...new Set(attractions.map(a => a.category))];
