@@ -15,14 +15,6 @@ const Attractions = () => {
 
   const attractions: Attraction[] = [
     {
-      "title": "Ciężkowicko-Rożnowski Park Krajobrazowy",
-      "description": "Park krajobrazowy oferujący malownicze szlaki turystyczne i unikalne formacje skalne.",
-      "distance": "5 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Przyroda"
-    },
-    {
       "title": "Skamieniałe Miasto w Ciężkowicach",
       "description": "Rezerwat przyrody z unikalnymi formacjami skalnymi przypominającymi ruiny miasta.",
       "distance": "10 km",
@@ -63,41 +55,9 @@ const Attractions = () => {
       "category": "Aktywność"
     },
     {
-      "title": "Kościół pw. św. Mikołaja Biskupa w Brzozowej",
-      "description": "Drewniany kościół z XVI wieku o unikalnej architekturze.",
-      "distance": "0 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Kultura"
-    },
-    {
-      "title": "Muzeum Regionalne w Brzozowej",
-      "description": "Muzeum prezentujące lokalne dziedzictwo kulturowe i historyczne.",
-      "distance": "0 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Kultura"
-    },
-    {
       "title": "Centrum Dziedzictwa Szkła w Krośnie",
       "description": "Interaktywne muzeum ukazujące proces tworzenia szkła.",
       "distance": "40 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Kultura"
-    },
-    {
-      "title": "Grodzisko w Trepczy",
-      "description": "Archeologiczne stanowisko z pozostałościami wczesnośredniowiecznego grodziska.",
-      "distance": "45 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Kultura"
-    },
-    {
-      "title": "Skansen w Sanoku",
-      "description": "Muzeum Budownictwa Ludowego prezentujące tradycyjną architekturę regionu.",
-      "distance": "50 km",
       "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
       "mapLink": "https://maps.app.goo.gl/",
       "category": "Kultura"
@@ -110,22 +70,7 @@ const Attractions = () => {
       "mapLink": "https://maps.app.goo.gl/",
       "category": "Dla dzieci"
     },
-    {
-      "title": "Rezerwat Przyrody Skamieniałe Miasto",
-      "description": "Obszar chroniony z unikalnymi formacjami skalnymi i legendami.",
-      "distance": "10 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Przyroda"
-    },
-    {
-      "title": "Ścieżka edukacyjna na Brzance",
-      "description": "Trasa z tablicami informacyjnymi o lokalnej faunie i florze.",
-      "distance": "15 km",
-      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-      "mapLink": "https://maps.app.goo.gl/",
-      "category": "Aktywność"
-    }
+    // lodowisko, letni park wodny
   ];
 
   const categories = ['wszystkie', ...new Set(attractions.map(a => a.category))];
