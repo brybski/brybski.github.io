@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone } from 'lucide-react';
+import ImageSlider from '../components/ImageSlider';
+import ImageModal from '../components/ImageModal';
 
 const Home = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const images = [
+    '/room1.jpg',
+    '/room2.jpg',
+    '/living1.jpg',
+    '/living2.jpg',
+    '/taras.jpg'
+  ];
+
+  const handleImageClick = () => {
+    setSelectedImageIndex(0);
+  };
+
+  const handleNext = () => {
+    setSelectedImageIndex(prev => 
+      prev !== null ? (prev + 1) % images.length : null
+    );
+  };
+
+  const handlePrev = () => {
+    setSelectedImageIndex(prev => 
+      prev !== null ? (prev - 1 + images.length) % images.length : null
+    );
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -15,21 +43,21 @@ const Home = () => {
             src="/odpoczniesztu-bg.jpg"
             alt="Domek"
             className="w-full h-full object-cover"
+            loading="eager"
           />
         </picture>
         <div className="absolute inset-0 bg-black bg-opacity-40">
-  <div className="max-w-7xl mx-auto px-4 h-full flex items-center">
-    <div className="text-white transform translate-y-[-80px] md:translate-y-0">
-      <h1 className="text-4xl md:text-6xl font-bold mb-4">
-        Twoja prywatna strefa komfortu
-      </h1>
-      <p className="text-xl md:text-2xl">
-        Przytulny domek z dala od miejskiego zgiełku
-      </p>
-    </div>
-  </div>
-</div>
-
+          <div className="max-w-7xl mx-auto px-4 h-full flex items-center">
+            <div className="text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                Twoja prywatna strefa komfortu
+              </h1>
+              <p className="text-xl md:text-2xl">
+                Przytulny domek z dala od miejskiego zgiełku
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* O nas Section */}
@@ -57,19 +85,12 @@ const Home = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative aspect-square cursor-pointer overflow-hidden rounded-lg">
-                <img
-                  src="/taras.jpg"
-                  alt="Taras z widokiem"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <div className="relative aspect-square cursor-pointer overflow-hidden rounded-lg">
-                <img
-                  src="/jacuzzi.jpg"
-                  alt="Jacuzzi na zewnątrz"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+            <div className="h-[400px] md:h-[300px]">
+              <div className="relative h-full w-full cursor-pointer overflow-hidden rounded-lg">
+                <ImageSlider
+                  images={images}
+                  interval={5000}
+                  onImageClick={handleImageClick}
                 />
               </div>
             </div>
@@ -94,6 +115,17 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Image Modal */}
+      {selectedImageIndex !== null && (
+        <ImageModal
+          images={images}
+          currentIndex={selectedImageIndex}
+          onClose={() => setSelectedImageIndex(null)}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      )}
     </>
   );
 };

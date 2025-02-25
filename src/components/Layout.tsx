@@ -24,7 +24,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="min-h-screen font-sans">
       {/* Top Bar */}
-      <div className="hidden md:block bg-[#1A1A1A] bg-opacity-90 text-white py-2 px-4">
+      <div className={`hidden md:block bg-[#1A1A1A] bg-opacity-90 text-white py-2 px-4 fixed w-full z-50 transition-transform duration-300 ${isScrolled ? '-translate-y-full' : ''}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center space-x-6">
             <span>Zarezerwuj już teraz!</span>
@@ -49,7 +49,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`} style={{ top: isScrolled ? '0' : '2.5rem' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <Link to="/" className="flex-shrink-0">
@@ -107,8 +107,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`block px-3 py-2 text-text hover:bg-gray-100 rounded-md ${
-                    isActive(item.path) ? 'bg-primary/10 text-primary' : ''
+                  className={`block px-3 py-2 text-text hover:text-primary ${
+                    isActive(item.path) ? 'border-b-2 border-primary' : ''
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -135,20 +135,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           />
         </div>
         <div className="md:px-8">
-          <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <MapPin className="w-5 h-5 mr-2" />
-            Lokalizacja
-          </h3>
-          <p className="hidden md:inline">Brzozowa 270</p>
-          <p>33-182 Brzozowa, Polska</p>
-          <a 
-            href="https://maps.app.goo.gl/NDb1JbzdycAUYieX7" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-primary hover:text-primary/80 mt-2 inline-flex items-center"
-          >
-            Zobacz na mapie <MapPin className="w-4 h-4 ml-1" />
-          </a>
+        <h3 className="text-lg font-semibold mb-4 flex items-center">
+                  <MapPin className="w-5 h-5 mr-2" />
+                  Lokalizacja
+                </h3>
+                <p>Brzozowa 270</p>
+                <a 
+                  href="https://maps.app.goo.gl/NDb1JbzdycAUYieX7" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80 inline-flex items-center"
+                >
+                  Zobacz na mapie <MapPin className="w-4 h-4 ml-1" />
+                </a>
         </div>
         <div className="md:px-8">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
@@ -177,8 +176,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     </div>
   </div>
 </footer>
-
-
     </div>
   );
 };

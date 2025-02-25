@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import ImageModal from '../components/ImageModal';
 
 type GalleryCategory = {
   name: string;
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; }[];
 };
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>("na zewnątrz");
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('na zewnątrz');
 
   const categories: GalleryCategory[] = [
     {
@@ -50,6 +51,20 @@ const Gallery = () => {
     },
   ];
 
+  const currentImages = categories.find(cat => cat.name === selectedCategory)?.images || [];
+
+  const handleNext = () => {
+    setSelectedImage(prev => 
+      prev !== null ? (prev + 1) % currentImages.length : null
+    );
+  };
+
+  const handlePrev = () => {
+    setSelectedImage(prev => 
+      prev !== null ? (prev - 1 + currentImages.length) % currentImages.length : null
+    );
+  };
+
   return (
     <div className="min-h-screen">
       {/* Header Image */}
@@ -74,8 +89,8 @@ const Gallery = () => {
                 onClick={() => setSelectedCategory(category.name)}
                 className={`px-4 py-2 rounded-full capitalize ${
                   selectedCategory === category.name
-                    ? "bg-primary text-secondary"
-                    : "bg-gray-100 hover:bg-gray-200"
+                    ? 'bg-primary text-secondary'
+                    : 'bg-gray-100 hover:bg-gray-200'
                 }`}
               >
                 {category.name}
@@ -85,43 +100,31 @@ const Gallery = () => {
 
           {/* Images Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {categories
-              .find((cat) => cat.name === selectedCategory)
-              ?.images.map((image, index) => (
-                <div
-                  key={index}
-                  className="aspect-square overflow-hidden rounded-lg cursor-pointer"
-                  onClick={() => setSelectedImage(image.src)}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+            {currentImages.map((image, index) => (
+              <div
+                key={index}
+                className="aspect-square overflow-hidden rounded-lg cursor-pointer"
+                onClick={() => setSelectedImage(index)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
 
           {/* Image Modal */}
-          {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedImage(null)}
-            >
-              <div className="relative max-w-4xl max-h-[90vh]">
-                <img
-                  src={selectedImage}
-                  alt="Powiększone zdjęcie"
-                  className="max-w-full max-h-[90vh] object-contain"
-                />
-                <button
-                  className="absolute top-4 right-4 text-white text-xl"
-                  onClick={() => setSelectedImage(null)}
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
+          {selectedImage !== null && (
+            <ImageModal
+              images={currentImages.map(img => img.src)}
+              currentIndex={selectedImage}
+              onClose={() => setSelectedImage(null)}
+              onNext={handleNext}
+              onPrev={handlePrev}
+            />
           )}
         </div>
       </div>
