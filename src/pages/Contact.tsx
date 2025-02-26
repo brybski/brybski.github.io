@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -54,6 +54,33 @@ const Contact = () => {
                   <h3 className="font-semibold mb-1">Adres</h3>
                   <p>Brzozowa 270</p>
                   <p>33-182 Brzozowa</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-6 h-6 flex justify-center mt-1">
+                  <Facebook className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Media społecznościowe</h3>
+                  <div className="space-y-2">
+                    <a 
+                      href="https://www.facebook.com/profile.php?id=61566660407549"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 flex items-center"
+                    >
+                      Facebook <Facebook className="w-4 h-4 ml-1" />
+                    </a>
+                    <a 
+                      href="https://www.instagram.com/odpoczniesztu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 flex items-center"
+                    >
+                      Instagram <Instagram className="w-4 h-4 ml-1" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

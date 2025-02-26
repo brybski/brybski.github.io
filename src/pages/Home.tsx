@@ -13,8 +13,8 @@ const Home = () => {
     '/outside14.jpg'
   ];
 
-  const handleImageClick = () => {
-    setSelectedImageIndex(0);
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
   };
 
   const handleNext = () => {
@@ -90,6 +90,8 @@ const Home = () => {
                   images={images}
                   interval={5000}
                   onImageClick={handleImageClick}
+                  onSwipeLeft={handlePrev}
+                  onSwipeRight={handleNext}
                 />
               </div>
             </div>

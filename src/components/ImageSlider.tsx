@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface ImageSliderProps {
   images: string[];
   interval?: number;
-  onImageClick?: () => void;
+  onImageClick?: (index: number) => void;
+  onSwipeLeft?: () => void;
+  onSwipeRight?: () => void;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ 
   images, 
   interval = 5000,
-  onImageClick 
+  onImageClick,
+  onSwipeLeft,
+  onSwipeRight
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const isMobile = window.innerWidth <= 768;
+
+  const minSwipeDistance = 50;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -21,12 +30,55 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     return () => clearInterval(timer);
   }, [images.length, interval]);
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEnd.current = null;
+    touchStart.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEnd.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart.current || !touchEnd.current) return;
+    
+    const distance = touchStart.current - touchEnd.current;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && onSwipeRight) {
+      onSwipeRight();
+    }
+    if (isRightSwipe && onSwipeLeft) {
+      onSwipeLeft();
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (isMobile) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+
+    if (x < width / 3) {
+      onSwipeLeft?.();
+    } else if (x > (width * 2) / 3) {
+      onSwipeRight?.();
+    } else {
+      onImageClick?.(currentIndex);
+    }
+  };
+
   return (
-    <div className="relative w-full h-full">
-      <div 
-        className="w-full h-full cursor-pointer"
-        onClick={onImageClick}
-      >
+    <div 
+      className="relative w-full h-full"
+      onClick={handleClick}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <div className="w-full h-full">
         {images.map((image, index) => (
           <img
             key={image}
@@ -47,7 +99,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             className={`w-2 h-2 rounded-full transition-colors ${
               index === currentIndex ? 'bg-primary' : 'bg-white/50'
             }`}
-            onClick={() => setCurrentIndex(index)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(index);
+            }}
           />
         ))}
       </div>
