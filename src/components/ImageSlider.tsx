@@ -1,56 +1,83 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageSliderProps {
   images: string[];
   interval?: number;
+  currentIndex?: number;
   onImageClick?: (index: number) => void;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
+  onIndexChange?: (index: number) => void;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ 
   images, 
   interval = 5000,
+  currentIndex: externalIndex,
   onImageClick,
   onSwipeLeft,
-  onSwipeRight
+  onSwipeRight,
+  onIndexChange
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const touchStart = useRef<number | null>(null);
-  const touchEnd = useRef<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(externalIndex || 0);
+  const [isHovering, setIsHovering] = useState(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const touchEnd = useRef<{ x: number; y: number } | null>(null);
   const isMobile = window.innerWidth <= 768;
 
   const minSwipeDistance = 50;
 
   useEffect(() => {
+    if (typeof externalIndex === 'number') {
+      setCurrentIndex(externalIndex);
+    }
+  }, [externalIndex]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      const nextIndex = (currentIndex + 1) % images.length;
+      setCurrentIndex(nextIndex);
+      onIndexChange?.(nextIndex);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [images.length, interval]);
+  }, [images.length, interval, currentIndex, onIndexChange]);
 
   const onTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
     touchEnd.current = null;
-    touchStart.current = e.targetTouches[0].clientX;
+    touchStart.current = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    touchEnd.current = e.targetTouches[0].clientX;
+    const touch = e.touches[0];
+    touchEnd.current = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
   };
 
   const onTouchEnd = () => {
     if (!touchStart.current || !touchEnd.current) return;
     
-    const distance = touchStart.current - touchEnd.current;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    const deltaX = touchStart.current.x - touchEnd.current.x;
+    const deltaY = touchStart.current.y - touchEnd.current.y;
 
-    if (isLeftSwipe && onSwipeRight) {
-      onSwipeRight();
-    }
-    if (isRightSwipe && onSwipeLeft) {
-      onSwipeLeft();
+    // Sprawdź, czy przesunięcie było bardziej poziome niż pionowe
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      const isLeftSwipe = deltaX > minSwipeDistance;
+      const isRightSwipe = deltaX < -minSwipeDistance;
+
+      if (isLeftSwipe && onSwipeRight) {
+        onSwipeRight();
+      }
+      if (isRightSwipe && onSwipeLeft) {
+        onSwipeLeft();
+      }
     }
   };
 
@@ -72,11 +99,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
   return (
     <div 
-      className="relative w-full h-full"
+      className="relative w-full h-full group"
       onClick={handleClick}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
       <div className="w-full h-full">
         {images.map((image, index) => (
@@ -91,6 +120,30 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           />
         ))}
       </div>
+
+      {/* Strzałki nawigacyjne - widoczne tylko na desktopie */}
+      {!isMobile && (
+        <>
+          <div 
+            className={`absolute left-0 top-0 bottom-0 w-1/3 flex items-center justify-start px-4 transition-opacity duration-200 ${
+              isHovering ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div className="bg-black/50 p-2 rounded-full text-white">
+              <ChevronLeft className="w-6 h-6" />
+            </div>
+          </div>
+          <div 
+            className={`absolute right-0 top-0 bottom-0 w-1/3 flex items-center justify-end px-4 transition-opacity duration-200 ${
+              isHovering ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div className="bg-black/50 p-2 rounded-full text-white">
+              <ChevronRight className="w-6 h-6" />
+            </div>
+          </div>
+        </>
+      )}
       
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
@@ -101,7 +154,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             }`}
             onClick={(e) => {
               e.stopPropagation();
-              setCurrentIndex(index);
+              const newIndex = index;
+              setCurrentIndex(newIndex);
+              onIndexChange?.(newIndex);
             }}
           />
         ))}

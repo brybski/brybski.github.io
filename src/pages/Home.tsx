@@ -5,6 +5,7 @@ import ImageModal from '../components/ImageModal';
 
 const Home = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   const images = [
     '/jacuzzi.jpg',
@@ -18,15 +19,19 @@ const Home = () => {
   };
 
   const handleNext = () => {
-    setSelectedImageIndex(prev => 
-      prev !== null ? (prev + 1) % images.length : null
-    );
+    const nextIndex = (currentSlideIndex + 1) % images.length;
+    setCurrentSlideIndex(nextIndex);
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(nextIndex);
+    }
   };
 
   const handlePrev = () => {
-    setSelectedImageIndex(prev => 
-      prev !== null ? (prev - 1 + images.length) % images.length : null
-    );
+    const prevIndex = (currentSlideIndex - 1 + images.length) % images.length;
+    setCurrentSlideIndex(prevIndex);
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(prevIndex);
+    }
   };
 
   return (
@@ -89,9 +94,11 @@ const Home = () => {
                 <ImageSlider
                   images={images}
                   interval={5000}
+                  currentIndex={currentSlideIndex}
                   onImageClick={handleImageClick}
                   onSwipeLeft={handlePrev}
                   onSwipeRight={handleNext}
+                  onIndexChange={setCurrentSlideIndex}
                 />
               </div>
             </div>
